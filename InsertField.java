@@ -43,4 +43,14 @@ public class InserirTest {
     driver.findElement(By.cssSelector(".btn")).click();
     assertThat(driver.findElement(By.cssSelector(".alert")).getText(), is("Conta adicionada com sucesso!"));
   }
+  @Test
+  public void alterar() {
+    driver.get("http://srbarriga.herokuapp.com/");
+    driver.findElement(By.linkText("Contas")).click();
+    driver.findElement(By.linkText("Listar")).click();
+    driver.findElement(By.cssSelector(".glyphicon-edit")).click();
+    driver.findElement(By.id("nome")).sendKeys("Conta");
+    driver.findElement(By.cssSelector(".btn")).click();
+    assertThat(driver.findElement(By.cssSelector(".alert")).getText(), is("Conta alterada com sucesso!"));
+  }
 }
