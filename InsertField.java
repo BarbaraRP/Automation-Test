@@ -53,4 +53,13 @@ public class InserirTest {
     driver.findElement(By.cssSelector(".btn")).click();
     assertThat(driver.findElement(By.cssSelector(".alert")).getText(), is("Conta alterada com sucesso!"));
   }
+  @Test
+  public void incluirContaExistente() {
+    driver.get("http://srbarriga.herokuapp.com/");
+    driver.findElement(By.linkText("Contas")).click();
+    driver.findElement(By.linkText("Adicionar")).click();
+    driver.findElement(By.id("nome")).sendKeys("Conta");
+    driver.findElement(By.cssSelector(".btn")).click();
+    assertThat(driver.findElement(By.cssSelector(".alert")).getText(), is("Já existe uma conta com esse nome!"));
+  }
 }
