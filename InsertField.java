@@ -62,4 +62,12 @@ public class InserirTest {
     driver.findElement(By.cssSelector(".btn")).click();
     assertThat(driver.findElement(By.cssSelector(".alert")).getText(), is("Já existe uma conta com esse nome!"));
   }
+  @Test
+  public void excluirContaFinal() {
+    driver.get("http://srbarriga.herokuapp.com/");
+    driver.findElement(By.linkText("Contas")).click();
+    driver.findElement(By.linkText("Listar")).click();
+    driver.findElement(By.cssSelector(".glyphicon-remove-circle")).click();
+    assertThat(driver.findElement(By.cssSelector(".alert")).getText(), is("Conta removida com sucesso!"));
+  }
 }
